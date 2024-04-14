@@ -31,7 +31,14 @@
                         </p>
                       </a>
                     </li>
-                    
+                    <li class="nav-item dropdown">
+                      <a href="<?php echo base_url ?>?page=up" class="nav-link nav-up">
+                        <i class="nav-icon fas fa-calendar"></i>
+                        <p>
+                          CareVault
+                        </p>
+                      </a>
+                    </li>
                     <li class="nav-item dropdown">
                       <a href="<?php echo base_url ?>?page=appointments" class="nav-link nav-appointments">
                         <i class="nav-icon fas fa-calendar"></i>
@@ -40,6 +47,7 @@
                         </p>
                       </a>
                     </li>
+
                     <li class="nav-item dropdown">
                       <a href="<?php echo base_url ?>?page=reports" class="nav-link nav-reports">
                         <i class="nav-icon fas fa-file-medical-alt"></i>
