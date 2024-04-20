@@ -163,7 +163,7 @@ Class Master extends DBConnection {
 					$data .= "('{$aid}','{$v}')";
 				}
 				if(!empty($data)){
-					$this->conn->query("DELETE * FROM `appointment_test_list` where `appointment_id` = $aid");
+					$this->conn->query("DELETE FROM `appointment_test_list` where `appointment_id` = $aid");
 					$sql = "INSERT INTO `appointment_test_list` (`appointment_id`, `test_id`) VALUES {$data}";
 					$save2 = $this->conn->query($sql);
 					if(!$save2){
@@ -242,19 +242,79 @@ Class Master extends DBConnection {
 		}
 		return json_encode($resp);
 	}
-	function delete_appointment(){
-		extract($_POST);
-		$del = $this->conn->query("UPDATE `appointment_list` set delete_flag = 1 where id = '{$id}'");
-		if($del){
-			$resp['status'] = 'success';
-			$this->settings->set_flashdata('success',"appointment has been deleted successfully.");
+	// function delete_appointment(){
+	// 	extract($_POST);
+	// 	$del = $this->conn->query("UPDATE `appointment_list` set delete_flag = 1 where id = '{$id}'");
+	// 	if($del){
+	// 		$resp['status'] = 'success';
+	// 		$this->settings->set_flashdata('success',"appointment has been deleted successfully.");
 
-		}else{
+	// 	}else{
+	// 		$resp['status'] = 'failed';
+	// 		$resp['error'] = $this->conn->error;
+	// 	}
+	// 	return json_encode($resp);
+	// }
+	// function delete_appointment() {
+	// 	extract($_POST);
+	// 	$id = isset($id) ? $id : ''; // Ensure $id is set, handle if not provided
+	
+	// 	error_log("Delete Appointment ID: " . $id); // Log the ID for debugging
+	
+	// 	$del = $this->conn->query("UPDATE `appointment_list` SET delete_flag = 1 WHERE id = '{$id}'");
+	
+	// 	if ($del) {
+	// 		$resp['status'] = 'success';
+	// 		$this->settings->set_flashdata('success', "Appointment has been deleted successfully.");
+	// 	} else {
+	// 		$resp['status'] = 'failed';
+	// 		$resp['error'] = $this->conn->error;
+	// 	}
+	
+	// 	return json_encode($resp);
+	// }
+	// function delete_appointment() {
+	// 	if (isset($_POST['id'])) {
+	// 		$id = $_POST['id'];
+	// 		// Proceed with the deletion logic using $id
+	// 		// Your deletion code here...
+	// 		$resp['status'] = 'success';
+	// 		$this->settings->set_flashdata('success', "Appointment has been deleted successfully.");
+	// 	} else {
+	// 		$resp['status'] = 'failed';
+	// 		$resp['error'] = 'ID parameter missing.';
+	// 	}
+	// 	return json_encode($resp);
+	// }
+	function delete_appointment() {
+		if (isset($_POST['id'])) {
+			$id = $_POST['id'];
+	
+			// Assuming $this->conn is your database connection object
+			$query = "DELETE FROM `appointment_list` WHERE id = ?";
+			$stmt = $this->conn->prepare($query);
+			$stmt->bind_param("i", $id);
+	
+			if ($stmt->execute()) {
+				// Deletion successful
+				$resp['status'] = 'success';
+				$this->settings->set_flashdata('success', "Appointment has been deleted successfully.");
+			} else {
+				// Error in executing the SQL query
+				$resp['status'] = 'failed';
+				$resp['error'] = 'SQL Error: ' . $stmt->error;
+				error_log('SQL Error: ' . $stmt->error);
+			}
+	
+			$stmt->close();
+		} else {
+			// ID parameter missing in POST data
 			$resp['status'] = 'failed';
-			$resp['error'] = $this->conn->error;
+			$resp['error'] = 'ID parameter missing.';
 		}
+	
 		return json_encode($resp);
-	}
+	}	
 	function save_reservation(){
 		if(empty($_POST['id'])){
 			$prefix = date("Ym")."-";

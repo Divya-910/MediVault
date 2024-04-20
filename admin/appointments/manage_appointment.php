@@ -25,14 +25,14 @@ if(isset($_GET['id'])){
 	}
 </style>
 <div class="container-fluid">
-    <form action="" id="appointment-form">
-        <input type="hidden" name="id" value="<?php echo isset($id) ? $id : '' ?>">
-        <div class="row">
-            <div class="form-group col-md-12">
-                <label for="schedule" class="control-label">Schedule</label>
-                <input type="datetime-local" name="schedule" id="schedule" class="form-control form-control-border" placeholder="Enter appointment Schedule" value ="<?php echo isset($schedule) ? date("Y-m-d\TH:i",strtotime($schedule)) : '' ?>" required>
-            </div>
+<form action="Master.php" method="POST" id="appointment-form">
+    <input type="hidden" name="id" value="<?= isset($id) ? htmlspecialchars($id) : '' ?>">
+    <div class="row">
+        <div class="form-group col-md-12">
+            <label for="schedule" class="control-label">Schedule</label>
+            <input type="datetime-local" name="schedule" id="schedule" class="form-control form-control-border" placeholder="Enter appointment Schedule" value="<?= isset($schedule) ? date("Y-m-d\TH:i", strtotime($schedule)) : '' ?>" required>
         </div>
+    </div>
         <div class="row">
             <div class="form-group col-md-12">
                 <label for="test_ids" class="control-label">Test</label>

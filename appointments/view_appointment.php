@@ -210,8 +210,8 @@ if(isset($_GET['id'])){
 
 <script>
     $(function(){
-        $('#delete_data').click(function(){
-			_conf("Are you sure to delete this Appointment permanently?","delete_appointment",['<?= isset($id) ? $id : '' ?>'])
+        $('#delete_data').click(function () {
+        _conf("Are you sure to delete this Appointment permanently?", "delete_appointment", ['<?= isset($id) ? $id : '' ?>']);
 		})
         $('#edit_data').click(function(){
 			uni_modal("Update Appointment Details","appointments/manage_appointment.php?id=<?= isset($id) ? $id : '' ?>",'mid-large')
@@ -220,26 +220,27 @@ if(isset($_GET['id'])){
 			uni_modal("Cancel Appointment","appointments/update_status.php?cancel=true&id=<?= isset($id) ? $id : '' ?>",'mid-large')
 		})
     })
-    function delete_appointment($id){
-		start_loader();
-		$.ajax({
-			url:_base_url_+"classes/Master.php?f=delete_appointment",
-			method:"POST",
-			data:{id: $id},
-			dataType:"json",
-			error:err=>{
-				console.log(err)
-				alert_toast("An error occured.",'error');
-				end_loader();
-			},
-			success:function(resp){
-				if(typeof resp== 'object' && resp.status == 'success'){
-					location.href="./?page=appointments";
-				}else{
-					alert_toast("An error occured.",'error');
-					end_loader();
-				}
-			}
-		})
-	}
+    function delete_appointment(id) {
+    start_loader();
+    $.ajax({
+        url: _base_url_ + "classes/Master.php?f=delete_appointment",
+        method: "POST",
+        data: { id: id }, // Corrected parameter name
+        dataType: "json",
+        error: function (xhr, status, error) {
+            console.error(xhr.responseText);
+            alert_toast("Error: An unexpected error occurred. See console for details.", 'error');
+            end_loader();
+        },
+        success: function (resp) {
+            if (typeof resp === 'object' && resp.status === 'success') {
+                alert_toast("Appointment deleted successfully.", 'success');
+                location.href = "./?page=appointments"; // Redirect to appointments page
+            } else {
+                alert_toast("Error: Failed to delete appointment.", 'error');
+            }
+            end_loader();
+        }
+    });
+}
 </script>

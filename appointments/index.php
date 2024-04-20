@@ -124,26 +124,61 @@
             ],
         });
 	})
-	function delete_appointment($id){
-		start_loader();
-		$.ajax({
-			url:_base_url_+"classes/Master.php?f=delete_appointment",
-			method:"POST",
-			data:{id: $id},
-			dataType:"json",
-			error:err=>{
-				console.log(err)
-				alert_toast("An error occured.",'error');
+	// function delete_appointment(id){
+	// 	start_loader();
+	// 	$.ajax({
+	// 		url:_base_url_+"classes/Master.php?f=delete_appointment",
+	// 		method:"POST",
+	// 		data:{id: id},
+	// 		dataType:"json",
+	// 		error:err=>{
+	// 			console.log(err)
+	// 			alert_toast("An error occured.",'error');
+	// 			end_loader();
+	// 		},
+	// 		success:function(resp){
+	// 			if(typeof resp== 'object' && resp.status == 'success'){
+	// 				location.reload();
+	// 			}else{
+	// 				alert_toast("An error occured.",'error');
+	// 				end_loader();
+	// 			}
+	// 		}
+	// 	})
+	// }
+	function delete_appointment(id) {
+    start_loader();
+    $.ajax({
+        url: _base_url_ + "classes/Master.php?f=delete_appointment",
+        method: "POST",
+        data: { id: id },
+        dataType: "json",
+        error: function(err) {
+            console.log(err);
+            alert_toast("An error occurred.", 'error');
+            end_loader();
+        },
+        // success: function(resp) {
+        //     if (typeof resp == 'object' && resp.status == 'success') {
+        //         alert_toast("Appointment deleted successfully.", 'success');
+        //         end_loader();
+        //         // Example: Redirect to a new page after successful deletion
+        //         window.location.href = "next_page.php";
+        //     } else {
+        //         alert_toast("An error occurred.", 'error');
+        //         end_loader();
+        //     }
+        // }
+		success: function(resp) {
+			if (typeof resp == 'object' && resp.status == 'success') {
+				alert_toast("Appointment deleted successfully.", 'success');
 				end_loader();
-			},
-			success:function(resp){
-				if(typeof resp== 'object' && resp.status == 'success'){
-					location.reload();
-				}else{
-					alert_toast("An error occured.",'error');
-					end_loader();
-				}
+			} else {
+				alert_toast("An error occurred.", 'error');
+				end_loader();
 			}
-		})
-	}
+		}
+	});
+}
+
 </script>

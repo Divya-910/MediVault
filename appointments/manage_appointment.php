@@ -83,7 +83,7 @@ if(isset($_GET['id'])){
                 dataType: 'json',
 				error:err=>{
 					console.log(err)
-					alert_toast("An error occured",'error');
+					alert_toast("ERROR",'error');
 					end_loader();
 				},
                 success:function(resp){

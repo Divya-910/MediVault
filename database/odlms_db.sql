@@ -91,6 +91,30 @@ INSERT INTO `appointment_test_list` (`appointment_id`, `test_id`, `date_created`
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `doctor_recommendation`
+--
+
+CREATE TABLE doctors (
+  id INT(30) NOT NULL AUTO_INCREMENT,
+  name VARCHAR(100) NOT NULL,
+  city VARCHAR(50) NOT NULL,
+  specialization VARCHAR(50) NOT NULL,
+  contact_number VARCHAR(20),
+  email VARCHAR(100),
+  date_joined DATE NOT NULL,
+  PRIMARY KEY (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `doctor_recommendation`
+--
+
+INSERT INTO doctors (name, city, specialization, contact_number, email, date_joined) VALUES
+('Dr. John Doe', 'New York', 'Cardiologist', '123-456-7890', 'johndoe@example.com', '2022-01-01'),
+('Dr. Jane Smith', 'Los Angeles', 'Dermatologist', '987-654-3210', 'janesmith@example.com', '2022-02-15'),
+('Dr. Michael Johnson', 'Chicago', 'Pediatrician', '111-222-3333', 'michaeljohnson@example.com', '2022-03-10');
+
+--
 -- Table structure for table `client_list`
 --
 
