@@ -56,6 +56,14 @@
                         </p>
                       </a>
                     </li>
+                    <li class="nav-item dropdown">
+                      <a href="<?php echo base_url ?>?page=up" class="nav-link nav-up">
+                        <i class="nav-icon fas fa-calendar"></i>
+                        <p>
+                          Doc Finder
+                        </p>
+                      </a>
+                    </li>
                   </ul>
                 </nav>
                 <!-- /.sidebar-menu -->
