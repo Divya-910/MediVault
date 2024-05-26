@@ -2,9 +2,9 @@
 <!-- Main Sidebar Container -->
       <aside class="main-sidebar sidebar-dark-primary elevation-4 sidebar-no-expand bg-gradient-black">
         <!-- Brand Logo -->
-        <a href="<?php echo base_url ?>admin" class="brand-link bg-transparent text-sm border-info shadow-sm bg-primary">
-        <img src="<?php echo validate_image($_settings->info('logo'))?>" alt="Store Logo" class="brand-image img-circle elevation-3 bg-black" style="width: 1.8rem;height: 1.8rem;max-height: unset;object-fit:scale-down;object-position:center center">
-        <span class="brand-text font-weight-light"><?php echo $_settings->info('short_name') ?></span>
+        <a href="#" class="brand-link bg-transparent text-sm border-info shadow-sm bg-primary">
+        <img src="logo2.jpeg" alt="Store Logo" class="brand-image img-circle elevation-3 bg-black" style="width: 1.8rem;height: 1.8rem;max-height: unset;object-fit: contain;object-position:center center">
+        <span class="brand-text font-weight-light">MediVault</span>
         </a>
         <!-- Sidebar -->
         <div class="sidebar os-host os-theme-light os-host-overflow os-host-overflow-y os-host-resize-disabled os-host-transition os-host-scrollbar-horizontal-hidden">
@@ -33,15 +33,23 @@
                     </li>
                     <li class="nav-item dropdown">
                       <a href="<?php echo base_url ?>?page=up" class="nav-link nav-up">
-                        <i class="nav-icon fas fa-calendar"></i>
+                        <i class="nav-icon fas fa-file-alt"></i>
                         <p>
                           CareVault
                         </p>
                       </a>
                     </li>
                     <li class="nav-item dropdown">
+                      <a href="<?php echo base_url ?>?page=view" class="nav-link nav-view">
+                        <i class="nav-icon fas fa-eye"></i>
+                        <p>
+                          View
+                        </p>
+                      </a>
+                    </li>
+                    <li class="nav-item dropdown">
                       <a href="<?php echo base_url ?>?page=appointments" class="nav-link nav-appointments">
-                        <i class="nav-icon fas fa-calendar"></i>
+                        <i class="nav-icon far fa-list-alt"></i>
                         <p>
                           Appointment List
                         </p>
@@ -58,9 +66,17 @@
                     </li>
                     <li class="nav-item dropdown">
                       <a href="<?php echo base_url ?>?page=doc" class="nav-link nav-doc">
-                        <i class="nav-icon fas fa-calendar"></i>
+                        <i class="nav-icon fas fa-stethoscope"></i>
                         <p>
                           Doc Finder
+                        </p>
+                      </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                      <a href="<?php echo base_url ?>?page=report" class="nav-link nav-report">
+                        <i class="nav-icon fas fa-chart-line"></i>
+                        <p>
+                          Data Digest
                         </p>
                       </a>
                     </li>

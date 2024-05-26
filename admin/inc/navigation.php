@@ -33,7 +33,7 @@
                     </li>
                     <li class="nav-item">
                       <a href="<?php echo base_url ?>admin/?page=appointments" class="nav-link nav-appointments">
-                        <i class="nav-icon fas fa-calendar"></i>
+                        <i class="nav-icon far fa-list-alt"></i>
                         <p>
                           Appointment List
                         </p>
