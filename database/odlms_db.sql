@@ -195,8 +195,22 @@ INSERT INTO `system_info` (`id`, `meta_field`, `meta_value`) VALUES
 -- Table structure for table `test_list`
 --
 
+CREATE TABLE `files` (
+  `id` int(11) NOT NULL,
+  `user_id` int(50) NOT NULL,
+  `file_name` varchar(255) NOT NULL,
+  `type` enum('jpg','jpeg','png','pdf') NOT NULL,
+  `size` int(11) NOT NULL,
+  `file_data` mediumblob NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+INSERT INTO `files` (`id`, `user_id`, `file_name`, `type`, `size`, `file_data`) VALUES
+--
+-- Dumping data for table `test_list`
+--
+
 CREATE TABLE `test_list` (
-  `id` int(30) NOT NULL,
+  `id` int(30)  NOT NULL,
   `name` text NOT NULL,
   `description` text NOT NULL,
   `cost` float NOT NULL DEFAULT 0,
@@ -205,10 +219,6 @@ CREATE TABLE `test_list` (
   `date_created` datetime NOT NULL DEFAULT current_timestamp(),
   `date_updated` datetime DEFAULT NULL ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `test_list`
---
 
 INSERT INTO `test_list` (`id`, `name`, `description`, `cost`, `status`, `delete_flag`, `date_created`, `date_updated`) VALUES
 (1, 'CT scan', 'A CT (computed tomography) scan is a type of x-ray that creates 3-dimensional images of your body, including bones, organs, tissues and tumours. The machine moves in a circular motion around you and takes x-rays of very thin slices of your body to create a cross-sectional image.', 2500, 1, 0, '2022-01-11 10:20:35', NULL),
