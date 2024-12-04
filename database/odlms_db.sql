@@ -205,6 +205,7 @@ CREATE TABLE `files` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 INSERT INTO `files` (`id`, `user_id`, `file_name`, `type`, `size`, `file_data`) VALUES
+(1, 101, 'example.txt', 'text/plain', 1024, 'Sample file data');
 --
 -- Dumping data for table `test_list`
 --
@@ -222,7 +223,7 @@ CREATE TABLE `test_list` (
 
 INSERT INTO `test_list` (`id`, `name`, `description`, `cost`, `status`, `delete_flag`, `date_created`, `date_updated`) VALUES
 (1, 'CT scan', 'A CT (computed tomography) scan is a type of x-ray that creates 3-dimensional images of your body, including bones, organs, tissues and tumours. The machine moves in a circular motion around you and takes x-rays of very thin slices of your body to create a cross-sectional image.', 2500, 1, 0, '2022-01-11 10:20:35', NULL),
-(2, 'Electrocardiogram (ECG)', 'An ECG is a graph of your heart\'s electrical activity. It is a safe test. There is no risk of being electrocuted.', 1500, 1, 0, '2022-01-11 10:21:20', NULL),
+(2, 'Electrocardiogram (ECG)', 'An ECG is a graph of your heart\s electrical activity. It is a safe test. There is no risk of being electrocuted.', 1500, 1, 0, '2022-01-11 10:21:20', NULL),
 (3, 'Magnetic Resonance Imaging (MRI) Scan', 'A magnetic resonance imaging (MRI) scan takes detailed pictures of the inside of the body. It can show up problems in the soft tissues without the need for surgery. It is also useful for planning some treatments of the same areas.', 2500, 1, 0, '2022-01-11 10:22:06', NULL),
 (4, 'X-Rays', 'An x-ray uses radiation to create a picture of the inside of the body. The x-ray beam is absorbed differently by various structures in the body, such as bones and soft tissues, and this is used to create the image. X-ray is also known as radiography.', 750, 1, 0, '2022-01-11 10:22:41', NULL),
 (5, 'Ultrasound', 'An ultrasound scan creates a real-time picture of the inside of the body using sound waves. Ultrasound is generally painless and non-invasive. Ultrasound works differently to x-ray in that it does not use radiation.', 1500, 1, 0, '2022-01-11 10:23:07', NULL),
